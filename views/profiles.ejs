@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>IQT</title>
+            <link rel = "icon" type = "image/gif/png" href = "../public/logo1.png" />
+        
+</head>
+<body>
+        <%- include navbar %>
+    
+ </br>
+     <p>USERNAME :<%= typeof name=='undefined'? " ":name%></p><br>
+     <p>EMAIL :<%= typeof mail=='undefined'? " ":mail%></p><br>
+     LINK :<a href="/profile/<%= typeof name=='undefined'? ' ' :name%>" >your profile</a>
+     
+</body>
+</html>

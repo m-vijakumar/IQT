@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+p {
+  text-align: center;
+  font-size: 60px;
+  margin-top: 0px;
+}
+</style>
+
+
+<script>
+  // Set the date we're counting down to
+  let countDownDate = 10;
+  let cc=0;
+  function Redirect()
+  {
+    location.href = 'https://www.w3schools.com/howto/howto_js_countdown.asp';
+  }	
+  // Update the count down every 1 second
+  var x = setInterval(function() {
+    // Output the result in an element with id="demo"
+    document.getElementById("demo").innerHTML = cc+ " m"+ countDownDate + "s ";
+      countDownDate--;
+      
+    // If the count down is over, write some text 
+    if (cc <= 0 && countDownDate <= 0) {
+      clearInterval(x);
+      document.getElementById("demo").innerHTML = "EXPIRED";
+      
+      document.getElementById("myForm").submit();
+  
+    }
+    if(countDownDate == 0){
+        cc--;
+          countDownDate =59
+      }
+  }, 1000);
+  </script>
+</head>
+<body>
+        <%- include navbar %>
+<p id="demo"></p>
+
+
+<form id="myForm" method="post" action="/test/score"> 
+  <% let i=0%>
+  <% allques.forEach((aa)=>{%>
+  </br>
+      <p style='font-size:30px ;text-align: left;font: bold;' ><%= allques[i].question  %> </p>
+  
+      <p style='font-size:20px;text-align: left;'  > <input type="radio" name="op<%= i%>" value="<%= allques[i].op1  %>"><%= allques[i].op1  %> </p>
+      <p style='font-size:20px;text-align: left;' > <input type="radio" name="op<%= i%>" value="<%= allques[i].op2  %>"><%= allques[i].op2  %> </p>
+      <p style='font-size:20px;text-align: left;' > <input type="radio" name="op<%= i%>" value="<%= allques[i].op3  %>"><%= allques[i].op3  %> </p>
+      <p style='font-size:20px;text-align: left;' > <input type="radio" name="op<%= i%>" value="<%= allques[i].op4  %>"><%= allques[i].op4  %> </p>
+     
+      <% i=i+1}) %>
+      <input type="submit"  value="Submit" style="background-color: red">
+    </br></br></br></br>
+</form> 
+
+
+</body>
+</html>
