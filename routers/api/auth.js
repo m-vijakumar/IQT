@@ -52,7 +52,7 @@ router.post("/auth/login",(req,res)=>{
                 {expiresIn :9000000},
                 (err, token) => {
                     res.cookie("auth_t", token, { maxAge: 90000000 });
-                    res.render("main")   
+                    res.redirect("/dashboard")  
                 }
                 )
         }else{
@@ -122,12 +122,11 @@ router.post("/auth/register",(req,res)=>{
                     { expiresIn: 3000 },
                      (err, token) => {
                     res.cookie("auth_t", token, { maxAge: 900000 });
-                    if(!err){ res.render("main");}
+                    if(!err){ res.redirect("/dashboard")}
                    else{
                        res.render("error");
                    }
                      
-                      
                   })
                   
                   )

@@ -15,9 +15,9 @@ app.set("view engine",'ejs');
 app.use("/",require("./routers/api/auth"));
 app.use("/profile",require("./routers/api/profile"));
 app.use("/leaderboard",require("./routers/api/leader"));
-//app.use("/dashboard",require("./routers/api/dashboard"));
+app.use("/dashboard",require("./routers/api/dashboard"));
 app.use("/test",require("./routers/api/test"));
-app.use("/add",require("./routers/api/add"));
+app.use("/admin",require("./routers/api/admin"));
 app.use(bodyparser.urlencoded({extended:false}))
 app.use(bodyparser.json())
 const db =require("./setup/connect").mongodbURL;

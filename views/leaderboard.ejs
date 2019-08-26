@@ -7,13 +7,27 @@
     <title>Document</title> <title>IQT
             <link rel = "IQT" type = "image/png" href = "../public/Capture.PNG" />
         </title>
+        <style src="../public/st.css">  </style>
 </head>
 <body>
         <%- include navbar %>
+    <center>
+        <table  style="width:26% ;height: 50%; text-align: center" >
     <% let i=0%>
+<tr >  <th>RANK</th>  <th>USERNAME</th>  <th>SCORE</th>  </tr>
 
-    <% for(i=0;i<= len;i++){%>
-        <%= i+1 %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <%= alluser[i].user %>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; <%= alluser[i].score %></br>
+    <% for(i=0;i< len;i++){%>
+        <tr>
+        <% if(alluser[i].user == user1){ %>
+            <td style="font-size: 26px ;font-family:blod "> <%= i+1 %></td>     <td style="font-size: 30px ;font-family:blod "><%= alluser[i].user %></td>     <td style="font-size: 26px ;font-family:blod "><%= alluser[i].score %></td>
+
+            <% }else{ %>
+            <td>  <%= i+1 %></td>    <td>  <%= alluser[i].user %> </td>    <td> <%= alluser[i].score %></td>
+        <%}%>
+       </tr>
     <%}%>
+<br>
+</table>
+</center>
 </body>
 </html>

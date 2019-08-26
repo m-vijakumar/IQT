@@ -1,9 +1,9 @@
 const mongoose =require("mongoose");
 const  Schema = mongoose.Schema;
-const newquestion = new Schema({
+const java_questions = new Schema({
 
     qid:{
-        type :String,
+        type :Number,
         require:true
     },
     question:{
@@ -32,4 +32,4 @@ const newquestion = new Schema({
     }
 });
 
-module.exports =Newquestions =mongoose.model("questions",newquestion)
+module.exports = javaquestions = mongoose.model("java_questions",java_questions)

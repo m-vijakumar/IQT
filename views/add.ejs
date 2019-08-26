@@ -10,16 +10,21 @@
     <%- include navbar %>
  <center>
 
-    <form method="post" action="/add/ques">
+    <form method="POST" action="/admin/ques/<%= types %>">
+
+        <%= types %>
         <input name="q" type="text" ></br></br>
         <input name="op1" type="text" ></br>
         <input name="op2" type="text" ></br>
         <input name="op3" type="text" ></br>
         <input name="op4" type="text" ></br></br>
-        <input name="ans" type="text" ></br>
+        <input name="ans" type="text"></br></br>
+        <input type="hidden"  name="types" value='<%= types %>' >
         <input name="submit" type="submit" >
 
-    </form> 
+    </form> <br><br><br>
+   <a href="/"> <button > Finished </button></a>
  </center>
+ <br><br><br>
 </body>
 </html>

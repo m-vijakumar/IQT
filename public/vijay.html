@@ -1,21 +1,42 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>HTML5 SVG demo</title>
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-  </head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <%- include navbar %>
+ <center>
 
-  <body>
-    <h1>HTML5 SVG Demo (embed with iframe)</h1>
 
-<p> A nice green circle that was embeded using the HTML "iframe" tag:
-<iframe src="green-circle.svg" 
-	width="64" height="64" style="border:1;"></iframe>
-</p>
-<p>
-Tips:
-<iframe src="green-circle.svg" style="float:left;margin-right:1cm;" 
-	width="64" height="40" style="border:1;"></iframe>
-</p>
+    <form method="post" action="/add/ques/<%= types %>">
+        <input name="q" type="text" ></br></br>
+        <input name="op1" type="text" ></br>
+        <input name="op2" type="text" ></br>
+        <input name="op3" type="text" ></br>
+        <input name="op4" type="text" ></br></br>
+        <input name="ans" id="1" type="radio" value="op1" >1 &nbsp;<input name="ans" type="radio" id="2"  value="op2" >2 &nbsp;
+        <input name="ans" id="3" type="radio" value="op3" >3 &nbsp;<input name="ans" type="radio" id="4" value="op4">4 &nbsp;</br>
+        <input name="submit" type="button" onclick="myFunction()" >
+
+    </form> 
+ </center>
+ <p id='demo'> </p>
+ <script>
+    function myFunction() {
+      
+      var a = document.getElementById("op1").value;
+      var b = document.getElementById("op2").value;
+      var c = document.getElementById("op3").value;
+      var d = document.getElementById("op4").value;
+      var x = document.getElementById("1").value =a;
+       document.getElementById("2").value =b;
+       document.getElementById("3").value =c  ;
+       document.getElementById("4").value = d;
+       document.getElementById("demo").innerHTML = a;
+    }
+    </script>
 </body>
 </html>

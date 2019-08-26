@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <%- include navbar %>
+    <form method="POST" action="/admin/auth">
+        <center><br><br><br><br>
+        Enter KeyID:<input type="text" name="key"  ><p style="font-size: 15px ;text-decoration-color:red "><%= typeof usermessage=='undefined'? " ":usermessage%> </p>
+        Select  :<p><input type="radio" name="types" value="cpp"> cpp</p>
+        <p><input type="radio" name="types" value="java"> java</p>
+        <input type="submit"  value="Login"  />
+        <br><br><br>
+        <p style="font-size: 15px ;text-decoration-color:red "><%= typeof message=='undefined'? " ":message%> </p>
+    </center>   
+    </form>
+</body>
+</html>

@@ -10,7 +10,7 @@ router.use(bodyparser.json());
 const newusers=require("../../models/question");
 const NewUser=require("../../models/newuser");
 
-router.get("/start",(req,res)=>{
+router.get("/start/:types",(req,res)=>{
 
     jsonwt.verify(req.cookies.auth_t, key, (err, user)=> {
         if(err){
@@ -19,7 +19,7 @@ router.get("/start",(req,res)=>{
 
         }else{  
             console.log(user)
-            jsonwt.sign({payload:user.username},
+            jsonwt.sign({payload:user.username,examtype :req.params.types},
             key,
             {expiresIn : 2*60},
             (err, token) => {
@@ -43,17 +43,19 @@ router.get("/",(req,res)=>{
     jsonwt.verify(req.cookies.exam_t, key, (err, decoded)=> {
         if(err){
             console.log(err);
-            res.redirect("/login");
+            res.redirect("/dashboard");
 
         }else{  
-            newusers.find({})
+            newusers.find({qid:decoded.examtype})
             .then(profile =>{
                 console.log(profile);
                 res.render("test",{
                 allques: profile
                 })       
             })
-            .catch(err => {res.render("error",{status:404} )
+            .catch(err => {
+                console.log(err)
+                res.render("error",{status:404} )
                 
             })
         }
@@ -63,7 +65,7 @@ router.post("/score",(req,res)=>{
     let sum =0;
     jsonwt.verify(req.cookies.exam_t, key, (err, user)=> {
         if(err){
-            res.redirect("/");
+            res.redirect("/dashboard");
         }else{
                 
         let i=0;
@@ -72,7 +74,7 @@ router.post("/score",(req,res)=>{
             console.log(all)
             let answers= [];
             var allans =Object.keys(all).map((key)=>{return [all[key]]})
-            newusers.find({})
+            newusers.find({qid:user.examtype})
             .then(profile =>{
             answers=profile
             for(i=0;i<answers.length;i++){
@@ -107,7 +109,7 @@ router.get("/result/:sum",(req,res)=>{
 
     jsonwt.verify(req.cookies.exam_t, key, (err, user)=> {
         if(err){
-            res.redirect("/");
+            res.redirect("/dashboard");
         }else{
             console.log(user.payload)
             NewUser.findOneAndUpdate({username:user.payload},
