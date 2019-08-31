@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>IQT
-            <link rel = "IQT" type = "image/png" href = "../public/Capture.PNG" />
+            
         </title>
+        <link rel = "icon" type = "image/png" href = "logo.png" />
 </head>
 <body>
-        <%- include navbar %>
+        <%- include home-navbar %>
         <form method="POST" action="/auth/login">
             <center><br><br><br><br>
             Enter Username:<input type="text" name="name"  ><p style="font-size: 15px ;text-decoration-color:red "><%= typeof usermessage=='undefined'? " ":usermessage%> </p>

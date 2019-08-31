@@ -78,5 +78,18 @@ Add
             }
 })
 
+router.get("/end",(req,res)=>{
+    jwt.verify(req.cookies.admin_t ,key, (err,user)=>{
+        if(err){
+                res.render("error");
+        }
+        else if(user){
+            res.clearCookie("admin_t").redirect("/")
+        }else{
+            res.redirect("/")
+        }
 
+    })
+
+})
 module.exports =router;

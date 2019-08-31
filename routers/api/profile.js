@@ -23,6 +23,7 @@ router.get("/",(req,res)=>{
     })
 })
 router.get("/:username",(req,res)=>{
+    
     console.log(req.params.username)
     newusers.findOne({username:req.params.username})
     .then(profile =>{

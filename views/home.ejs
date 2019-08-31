@@ -5,20 +5,103 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>IQT</title>
-  <link rel = "icon" type = "icon/png" href = "../public/logo3.png" sizes="16*16" />
-</head>
-<style src="../public/st.css">
+  <link rel = "icon" type = "image/png" href = "logo.png" />
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   
-</style>
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.3.1/css/font-awesome.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"> -->
+ 
+  <link rel="stylesheet " href="st.css">  
+</head>
+
 <body>
-    <%- include navbar %>
-  <h1 class="sss" >Test Your IQ Levels</h1>
-  </br>  </br>  </br>  </br>  </br>
-<svg width="200" height="200"
-  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">       
-  <image xlink:src="../public/logo3.png" height="200" width="200"/>
-</svg>  <a href="/login" class="ppp">login</a>&nbsp;
-  <a href="/register" class="ppp">register</a>
-  <a href="/admin" class="ppp">LoginAsAdmin</a>
+
+<%- include home-navbar %>
+<br>
+<div style="float: right; right: 5%;">
+    <a href="/admin" ><button type="button" class="btn btn-info">LoginAsAdmin</button></a> 
+
+</div>
+</br>
+  <h1  >Test Your IQ Levels</h1>
+  
+
+</br> 
+  <div class="hero-image">
+     
+    <div class="hero-text">
+      <h1 style="color: rgb(98, 248, 198)">Test Your Skills</h1>
+
+      <a href="/register" class="ppp"><button type="button" style="font: bold" class="btn btn-success">register</button></a>
+    </div>
+  </div>
+
+
+
+
+
+  <a href="/login" class="ppp">login</a>&nbsp;<br>
+  <a href="/register" class="ppp">register</a><br>
+  
 </body>
+
+<footer>
+<div class="footer-top">
+
+  <div class="container">
+     
+    <div class="row">
+      <div class="col-md-3 col-sm-6 col-xs-12 segment-one">
+          <h2>IQT</h2>
+        <p >
+          interview questions Test
+          on programming languages
+          which gives pratice for attending and jobs
+        </p>
+      </div>
+      <div class="col-md-3 col-sm-6 col-xs-12" segment-two>
+        <h2>Our Tests</h2>
+          <p>
+            <ul style="color :#999">
+              <li>Cpp</li>
+              <li>Java</li>
+              <li>Python</li>
+              
+            </ul>
+          </p>
+        </div>
+        <div class="col-md-3 col-sm-6 col-xs-12 segment-three">
+          <h2>Follow Us</h2>
+            <p>
+              support us on 
+            </p>
+            
+            <a href="#" ><i id="sm" class="fa fa-facebook fa-2x "></i></a>
+            <a href="#"><i id="sm" class="fa  fa-twitter fa-2x "></i></a>
+            <a href="#"><i id="sm" class="fa  fa-linkedin fa-2x"></i></a>
+           <a href="#"><i id="sm" class="fa  fa-github fa-2x"></i></a>
+          </div>
+          <div class="col-md-3 col-sm-6 col-xs-12 segment-four">
+            <h2>Feedback</h2>
+              <p>
+                Contact Us
+              </p>
+              <input type="text">
+              <button><i id="s" class="fa fa-send"></i></button>
+            </div>
+
+    </div>
+  </br>
+    <div style="float: right; top: 30%">
+        <!-- <p style="color:azure ;  font-size: 14px"> <img src="copyright.jpeg" height="20px" width="20px">copyright 2019 IQT </p>   -->
+        <p style="color:azure ;  font-size: 15px"> <i class="fa fa-copyright fa-lg" ></i>  Copyright 2019 IQT </p>  
+    </div>
+  </div>
+
+  
+</div>
+
+  </footer>
 </html>

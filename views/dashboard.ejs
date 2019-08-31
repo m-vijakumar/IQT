@@ -4,13 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>IQT</title>
+    <link rel = "icon" type = "image/png" href = "logo.png" />
 </head>
 <body>
-    <%= typeof user == undefined ? ' ' : user %>
-    <%= typeof score == undefined ? '0' : score %>
 
-    <form method="get" action="/test/start/cpp "><input type="submit" value="Cpp Test "></form>
-    <form method="get" action="/test/start/java "><input type="submit" value="Java Test "></form>
+    <%- include navbar%>
+    <br>
+    <center>
+<div >
+        <p style="font: bold" >UserName :<%= typeof user == undefined ? ' ' : user %> &nbsp; </p>
+        <p style="font: bold" >Score    :<%= typeof score == undefined ? '0' : score %> &nbsp;</p>
+        
+</div>
+<br>
+
+<div >
+        <form method="get" action="/test/start/cpp "><input type="submit" class="btn btn-info "value="Cpp Test "></form><br>
+    <form method="get" action="/test/start/java "><input type="submit" class="btn btn-info" value="Java Test "></form>
+</div>
+</center>
+
 </body>
 </html>
