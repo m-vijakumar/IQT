@@ -1,9 +1,9 @@
 const express = require('express');
 const app = express();
-const https = require('https').Server(app);
-const io = require('socket.io')(https);
-// const http = require('http').Server(app);
-// const io = require('socket.io')(http);
+// const https = require('https').Server(app);
+// const io = require('socket.io')(https);
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
 const jsonwt = require("jsonwebtoken");
 const bodyparser =require('body-parser');
 const mongoose =require('mongoose');
@@ -82,12 +82,12 @@ io.sockets.on('connection', function(socket) {
 
 });
 
-const server = https.listen(port, function() {
-    console.log('listening on *:5000');
-});
-// const server = http.listen(port, function() {
-//     console.log('listening on *:8080');
+//  https.listen(port, function() {
+//     console.log('listening on *:5000');
 // });
+http.listen(port, function() {
+    console.log('listening on *:8080');
+ });
 // app.listen(port,console.log('server is running.....'));
 
 module.exports=app;
