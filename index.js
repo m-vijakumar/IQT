@@ -1,9 +1,10 @@
 const express = require('express');
 const app = express();
+// const socket = require(socket.io);
 // const https = require('https').Server(app);
 // const io = require('socket.io')(https);
-const http = require('http').Server(app);
-const io = require('socket.io')(http);
+// const server = require('http').createServer(app);
+// const io = require('socket.io').listen(server);
 const jsonwt = require("jsonwebtoken");
 const bodyparser =require('body-parser');
 const mongoose =require('mongoose');
@@ -66,7 +67,19 @@ app.get("/chat",(req,res)=>{
       });
 })
 
-io.sockets.on('connection', function(socket) {
+
+//  https.listen(port, function() {
+//     console.log('listening on *:5000');
+// });
+// http.listen(port, function() {
+//     console.log('listening on *:8080');
+// //  });
+//  app.listen(port,console.log('server is running.....'));
+
+ const server = app.listen(port,console.log('server is running.....'));
+  const io = require("socket.io")(server);
+
+ io.on('connection', function(socket) {
     socket.on('username', function(username) {
         socket.username = username;
         io.emit('is_online', '🔵 <i>' + socket.username + ' join the chat..</i>');
@@ -82,12 +95,5 @@ io.sockets.on('connection', function(socket) {
 
 });
 
-//  https.listen(port, function() {
-//     console.log('listening on *:5000');
-// });
-http.listen(port, function() {
-    console.log('listening on *:8080');
- });
-// app.listen(port,console.log('server is running.....'));
 
 module.exports=app;
