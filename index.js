@@ -15,8 +15,13 @@ const cookieparser =require('cookie-parser')
 const key =require("./setup/connect").sceret;
 const port =process.env.PORT || 5000;
 const ejs =require("ejs");
+
+let uchat =[];
+
 app.use(express.static("public"));
 app.set("view engine",'ejs');
+
+
 
 app.use("/",require("./routers/api/auth"));
 app.use("/profile",require("./routers/api/profile"));
@@ -34,6 +39,10 @@ mongoose
 .catch(err =>console.log(err))
 
 app.use(cookieparser());
+
+
+
+
 app.get('/',(req, res)=> {
 
     jsonwt.verify(req.cookies.auth_t, key, (err, user) => {
@@ -61,6 +70,9 @@ app.get("/chat",(req,res)=>{
             messageModel
             .findOne({id__: "1234"})
             .then(r => {
+              r.messages.forEach(element => {
+                uchat.push(element);
+              });
               res.render('chat.ejs',{
                 username:user.username,
                 messages: r.messages
@@ -87,8 +99,19 @@ app.get("/chat",(req,res)=>{
  const server = app.listen(port,console.log('server is running.....'));
 const io = require("socket.io")(server);
 
+
  io.on('connection', function(socket) {
+
+  socket.emit('note','note')
+  for(var i=0 ;i<uchat.length;i++){
+
+    socket.emit("pre",'<strong>' + uchat[i].messageBy + '</strong>: ' + uchat[i].message)
+    
+  }
+
+
     socket.on('username', function(username) {
+      uchat=[];
         socket.username = username;
         io.emit('is_online', '🔵 <i>' + socket.username + ' join the chat..</i>');
     });

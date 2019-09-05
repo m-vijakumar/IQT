@@ -21,7 +21,9 @@
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
   </head>
   <body>
-    
+
+      <%- include navbar %>
+    <h3 id='note'></h3>
     <ul id="messages"></ul>
     <!-- <div id="messageBoard">
         <% for (var t=0;t<messages.length;t++) { %>
@@ -37,8 +39,8 @@
     </form>
     <input type="hidden" name="username1" id="user" value="<%= username %>" >
     <script>
-            //var socket = io.connect('http://localhost:5000');
-            var socket = io();
+            var socket = io.connect('http://localhost:5000',{secure: true, reconnect: true, rejectUnauthorized : false });
+            // var socket = io();
             // submit text message without reload/refresh the page
             $('form').submit(function(e){
                 e.preventDefault(); // prevents page reloading
@@ -53,15 +55,23 @@
             });
             // append text if someone is online
             socket.on('is_online', function(username) {
+              
                 $('#messages').append($('<li>').html(username));
+            });
+
+            socket.on('note', function(note) {
+                $('#note').html('Note: This Chat Will Be Saved');
+            });
+            socket.on('pre', function(chats) {
+                $('#messages').append($('<li>').html(chats));
             });
             // ask username
             var username = document.getElementById("user").value;
 
-            for(var i=0 ;i<3;i++){
+            // for(var i=0 ;i<3;i++){
 
-              socket.emit($("#messages").append($('<li>').html ("vijay vijay") ));
-            }
+            //   socket.emit($("#messages").append($('<li>').html ("vijay vijay") ));
+            // }
 
             socket.emit('username', username);
     </script>
