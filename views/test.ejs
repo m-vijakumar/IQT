@@ -51,12 +51,12 @@ p {
   <% let i=0%>
   <% allques.forEach((aa)=>{%>
   </br>
-      <p style='font-size:30px ;text-align: left;font: bold;' ><%=  allques[i].question  %> </p>
-  
-      <p style='font-size:20px;text-align: left;'  > <input type="radio" name="op<%= i%>" value="<%= allques[i].op1  %>"><%= allques[i].op1  %> </p>
-      <p style='font-size:20px;text-align: left;' > <input type="radio" name="op<%= i%>" value="<%= allques[i].op2  %>"><%= allques[i].op2  %> </p>
-      <p style='font-size:20px;text-align: left;' > <input type="radio" name="op<%= i%>" value="<%= allques[i].op3  %>"><%= allques[i].op3  %> </p>
-      <p style='font-size:20px;text-align: left;' > <input type="radio" name="op<%= i%>" value="<%= allques[i].op4  %>"><%= allques[i].op4  %> </p>
+  <p style='font-size:30px ;text-align: left;font: bold;' ><input type="radio" name="<%= i%>" value="NaN" checked /><%=  allques[i].question  %> </p>
+                                                    
+      <p style='font-size:20px;text-align: left;'  > <input type="radio" name="<%= i%>" value="<%= allques[i].op1  %>"><%= allques[i].op1  %> </p>
+      <p style='font-size:20px;text-align: left;' > <input type="radio" name="<%= i%>" value="<%= allques[i].op2  %>"><%= allques[i].op2  %> </p>
+      <p style='font-size:20px;text-align: left;' > <input type="radio" name="<%= i%>" value="<%= allques[i].op3  %>"><%= allques[i].op3  %> </p>
+      <p style='font-size:20px;text-align: left;' > <input type="radio" name="<%= i%>" value="<%= allques[i].op4  %>"><%= allques[i].op4  %> </p>
      
       <% i=i+1}) %>
       <center><input type="submit"  value="Submit" class="btn btn-danger"></center>

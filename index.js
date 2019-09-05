@@ -37,7 +37,7 @@ mongoose
 .connect(db,{useNewUrlParser :true})
 .then(()=> console.log("mongodb connected"))
 .catch(err =>console.log(err))
-
+mongoose.set('useNewUrlParser', true);
 app.use(cookieparser());
 
 
