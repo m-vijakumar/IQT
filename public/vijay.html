@@ -1,42 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+<html>
 <body>
-    <%- include navbar %>
- <center>
 
+<h2>JavaScript Objects</h2>
 
-    <form method="post" action="/add/ques/<%= types %>">
-        <input name="q" type="text" ></br></br>
-        <input name="op1" type="text" ></br>
-        <input name="op2" type="text" ></br>
-        <input name="op3" type="text" ></br>
-        <input name="op4" type="text" ></br></br>
-        <input name="ans" id="1" type="radio" value="op1" >1 &nbsp;<input name="ans" type="radio" id="2"  value="op2" >2 &nbsp;
-        <input name="ans" id="3" type="radio" value="op3" >3 &nbsp;<input name="ans" type="radio" id="4" value="op4">4 &nbsp;</br>
-        <input name="submit" type="button" onclick="myFunction()" >
+<p id="demo"></p>
 
-    </form> 
- </center>
- <p id='demo'> </p>
- <script>
-    function myFunction() {
-      
-      var a = document.getElementById("op1").value;
-      var b = document.getElementById("op2").value;
-      var c = document.getElementById("op3").value;
-      var d = document.getElementById("op4").value;
-      var x = document.getElementById("1").value =a;
-       document.getElementById("2").value =b;
-       document.getElementById("3").value =c  ;
-       document.getElementById("4").value = d;
-       document.getElementById("demo").innerHTML = a;
-    }
-    </script>
+<script>
+// Create an object:
+var person1 = {
+  firstName: "John",
+  lastName: "Doe",
+  age: 50,
+  eyeColor: "blue"
+};
+
+var person = person1;
+// Display some data from the object:
+document.getElementById("demo").value = person1;
+var aa = document.getElementById("demo").value; 
+console.log( aa);
+</script>
+
 </body>
 </html>

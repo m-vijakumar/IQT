@@ -21,9 +21,9 @@ router.get("/start/:types",(req,res)=>{
             console.log(user)
             jsonwt.sign({payload:user.username,examtype :req.params.types},
             key,
-            {expiresIn : 2*60},
+            {expiresIn : 670},
             (err, token) => {
-                res.cookie("exam_t", token, { maxAge: 120000 });
+                res.cookie("exam_t", token, { maxAge: 670000 });
                 if(!err){ res.redirect("/test")}
                else{
                    res.redirect("/login");

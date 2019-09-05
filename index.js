@@ -5,6 +5,9 @@ const app = express();
 // const io = require('socket.io')(https);
 // const server = require('http').createServer(app);
 // const io = require('socket.io').listen(server);
+const messageModel = require("./models/MessageModel");
+const User = require("./models/newuser");
+
 const jsonwt = require("jsonwebtoken");
 const bodyparser =require('body-parser');
 const mongoose =require('mongoose');
@@ -55,10 +58,15 @@ app.get("/chat",(req,res)=>{
 
     jsonwt.verify(req.cookies.auth_t, key, (err, user) => {
         if (user) {
-            res.render('chat.ejs',{
-                username:user.username
+            messageModel
+            .findOne({id__: "1234"})
+            .then(r => {
+              res.render('chat.ejs',{
+                username:user.username,
+                messages: r.messages
             });
-          
+            })
+            .catch(er => console.log(er));
         } else {
           return res
           .status(404)
@@ -77,7 +85,7 @@ app.get("/chat",(req,res)=>{
 //  app.listen(port,console.log('server is running.....'));
 
  const server = app.listen(port,console.log('server is running.....'));
-  const io = require("socket.io")(server);
+const io = require("socket.io")(server);
 
  io.on('connection', function(socket) {
     socket.on('username', function(username) {
@@ -90,10 +98,24 @@ app.get("/chat",(req,res)=>{
     })
 
     socket.on('chat_message', function(message) {
-        io.emit('chat_message', '<strong>' + socket.username + '</strong>: ' + message);
-    });
+        messageModel.findOne({id__: "1234"}).then(r => {
+          r.messages.push({
+            message: message,
+            messageBy: socket.username
+          });
+        r.save();
+        }).catch(er => console.log(er));
 
-});
+        User
+        .findOne({username : socket.username})
+        .then(user => {
+          user.messages.push(message);
+          user.save();
+        })
+        .catch(er => console.log(er));
+        io.emit('chat_message', '<strong>' + socket.username + '</strong>: ' + message);
+      });
+  });
 
 
 module.exports=app;

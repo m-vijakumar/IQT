@@ -5,6 +5,9 @@
       <title>IQT</title>
       <link rel = "icon" type = "image/png" href = "logo.png" />
     <style>
+        #messageBoard {
+            padding: 20px 20px 20px 20px;
+        }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font: 13px Helvetica, Arial; }
         form { background: #fff; padding: 3px; position: fixed; bottom: 0; width: 100%; border-color: #000; border-top-style: solid; border-top-width: 1px;}
@@ -18,11 +21,20 @@
     <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
   </head>
   <body>
+    
     <ul id="messages"></ul>
+    <!-- <div id="messageBoard">
+        <% for (var t=0;t<messages.length;t++) { %>
+        <h3><%= messages[t].messageBy %> : <%= messages[t].message %></h3>
+        <br />
+        <% } %>
+    </div> -->
+    <br/>
+    <br/>
+    <br/>
     <form action="/chat" method="POST" id="chatForm">
-      <input id="txt" autocomplete="off" autofocus="on" oninput="isTyping()" placeholder="type your message here..." /><button>Send</button>
+      <input id="txt" autocomplete="off" autofocus="on" placeholder="type your message here..."/><button>Send</button>
     </form>
-
     <input type="hidden" name="username1" id="user" value="<%= username %>" >
     <script>
             //var socket = io.connect('http://localhost:5000');
@@ -30,6 +42,7 @@
             // submit text message without reload/refresh the page
             $('form').submit(function(e){
                 e.preventDefault(); // prevents page reloading
+
                 socket.emit('chat_message', $('#txt').val());
                 $('#txt').val('');
                 return false;
@@ -44,6 +57,12 @@
             });
             // ask username
             var username = document.getElementById("user").value;
+
+            for(var i=0 ;i<3;i++){
+
+              socket.emit($("#messages").append($('<li>').html ("vijay vijay") ));
+            }
+
             socket.emit('username', username);
     </script>
   </body>
